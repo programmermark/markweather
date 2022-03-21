@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3261423 */
+  src: url('iconfont.woff2?t=1647767463908') format('woff2'),
+       url('iconfont.woff?t=1647767463908') format('woff'),
+       url('iconfont.ttf?t=1647767463908') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+  content: "\e659";
+}
+
+.icon-catch-cold:before {
+  content: "\e61b";
+}
+
+.icon-umbrella:before {
+  content: "\e666";
+}
+
+.icon-air-pollution:before {
+  content: "\e617";
+}
+
+.icon-sofa:before {
+  content: "\e634";
+}
+
+.icon-airplane:before {
+  content: "\e6af";
+}
+
+.icon-exercise:before {
+  content: "\e717";
+}
+
+.icon-clothes:before {
+  content: "\e8c7";
+}
+
+.icon-wash-car:before {
+  content: "\e775";
+}
+
+.icon-location:before {
+  content: "\e650";
+}
+
+.icon-arrow-down:before {
+  content: "\e688";
+}
+

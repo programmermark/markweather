@@ -1,0 +1,13 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "xiaoyuanweather",
+  "description": "小源天气",
+  "appid": "wx68396b21d4585a7f",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": false
+  },
+  "compileType": "miniprogram"
+}
