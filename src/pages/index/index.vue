@@ -7,6 +7,7 @@
     <!-- 24小时天气预报 -->
     <!-- 7天天气预报 -->
     <!-- 生活指数 -->
+    <IndicesWeather :isFetch="hasGetLocation" />
   </view>
 </template>
 
@@ -18,6 +19,7 @@ import RealTimeWeather from "@/components/RealTimeWeather.vue";
 import { ref } from "vue";
 import apis from "@/apis/index";
 import { IGetGeoByLocation } from "@/components/interface";
+import IndicesWeather from "@/components/IndicesWeather.vue";
 
 const locationStore = useLocationStore();
 const defaultCity = "北京";

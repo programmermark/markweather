@@ -1,4 +1,3 @@
-ITreeDayWeatherResponse, , ITreeDayWeather
 <template>
   <view :class="['wrapper', realTimeWeatherBg]">
     <view class="location-wrapper">
@@ -82,7 +81,7 @@ ITreeDayWeatherResponse, , ITreeDayWeather
 
 <script lang="ts" setup>
 import Taro from "@tarojs/taro";
-import { onMounted, ref, watch, toRefs, computed } from "vue";
+import { ref, watch, toRefs, computed } from "vue";
 import { useLocationStore } from "@/stores/location";
 import { transAirQualityToColor, transWeatherToIconColor } from "@/common/js";
 import apis from "../apis";
@@ -244,15 +243,6 @@ watch(isFetch, (val) => {
     getTreeDayWeather();
   }
 });
-
-onMounted(() => {
-  Taro.nextTick(() => {
-    getRealTimeWeather();
-    getRealTimeAirQuality();
-    getLocationByGeo();
-    getTreeDayWeather();
-  });
-});
 </script>
 
 <style lang="scss">
@@ -376,7 +366,7 @@ onMounted(() => {
     width: 50%;
     padding: 0 32px;
     box-sizing: border-box;
-    font-size: 36px;
+    font-size: 34px;
     &:first-child {
       border-right: 1px solid #e1e2e4;
     }
@@ -401,6 +391,7 @@ onMounted(() => {
   flex-direction: row-reverse;
   .sperate {
     padding: 0 8px;
+    color: #666;
   }
   .icon {
     font-size: 40px;
