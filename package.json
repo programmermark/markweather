@@ -40,6 +40,8 @@
     "@tarojs/runtime": "3.4.3",
     "@tarojs/taro": "3.4.3",
     "axios": "^0.26.1",
+    "echarts": "^5.3.1",
+    "lodash": "^4.17.21",
     "pinia": "^2.0.6",
     "qweather-icons": "^1.1.1",
     "taro-plugin-pinia": "^1.0.0",
