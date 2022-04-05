@@ -137,9 +137,11 @@ export function getWeek(date: Date) {
  */
 export function transHourTOText(dateStr: string) {
   const nowHour = new Date().getHours();
+  const nowDay = new Date().getDate();
   const dateHour = new Date(dateStr).getHours();
+  const dateDay = new Date(dateStr).getDate();
   let text = "";
-  if (nowHour === dateHour) {
+  if (nowHour === dateHour && nowDay === dateDay) {
     text = "现在";
   } else if (dateHour === 0) {
     text = "明天";
@@ -149,4 +151,31 @@ export function transHourTOText(dateStr: string) {
     text = `${dateHour}:00`;
   }
   return text;
+}
+
+/**
+ * 转换日期字符串为星期文本
+ * @param dateStr 日期字符串
+ * @returns
+ */
+export function transDateToWeek(dateStr: string) {
+  const date = new Date(dateStr);
+  const isYesterday = date.getDate() === new Date().getDate() - 1;
+  const isToday = date.getDate() === new Date().getDate();
+  if (isYesterday) {
+    return "昨天";
+  }
+  if (isToday) {
+    return "今天";
+  }
+  const week = [
+    "星期日",
+    "星期一",
+    "星期二",
+    "星期三",
+    "星期四",
+    "星期五",
+    "星期六",
+  ];
+  return week[date.getDay()];
 }

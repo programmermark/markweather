@@ -1,13 +1,35 @@
 <template>
-  <view class="seven-day-weather">
+  <view class="seven-day-weather-wrapper">
     <view class="title">7天预报</view>
-    <scroll-view class="scroll-view" :scroll-x="true">
-      <Echart
-        v-if="sevenDayWeatherOptions"
-        canvas-id="daily-line"
-        :option="sevenDayWeatherOptions"
-      />
-    </scroll-view>
+    <view class="seven-day-weather">
+      <view
+        class="seven-day-weather-item"
+        v-for="(item, index) in sevenDayWeather"
+        :key="index"
+      >
+        <view class="date">
+          <view class="week-text">{{ transDateToWeek(item.fxDate) }}</view>
+          <view class="date-text">{{
+            formatTime(item.fxDate, "MM月dd日")
+          }}</view>
+        </view>
+        <text
+          :class="['icon', `qi-${item.iconDay}`]"
+          :style="{
+            color: transWeatherToIconColor(item.textDay),
+          }"
+        ></text>
+        <view class="text">{{ item.tempMax }}°</view>
+        <view class="temp-bar"></view>
+        <view class="text">{{ item.tempMin }}°</view>
+        <text
+          :class="['icon', `qi-${item.iconNight}`]"
+          :style="{
+            color: transWeatherToIconColor(item.textNight),
+          }"
+        ></text>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -16,10 +38,14 @@ import { useLocationStore } from "@/stores/location";
 import Taro from "@tarojs/taro";
 import { ref, toRefs, watch } from "vue";
 import apis from "../apis";
-import Echart from "./Echart.vue";
+import {
+  transWeatherToIconColor,
+  formatTime,
+  transDateToWeek,
+} from "@/common/js";
 import { ITreeDayWeatherResponse } from "./interface";
-import { ECOption } from "./interface/echart";
 import { ITreeDayWeather } from "./interface/realTimeWeather";
+
 const props = withDefaults(defineProps<{ isFetch: boolean }>(), {
   isFetch: false,
 });
@@ -29,53 +55,6 @@ const { isFetch } = toRefs(props);
 const locationStore = useLocationStore();
 
 const sevenDayWeather = ref<ITreeDayWeather[]>();
-
-const sevenDayWeatherOptions: ECOption = {
-  tooltip: {
-    show: false,
-  },
-  toolbox: {
-    show: false,
-  },
-  xAxis: {
-    type: "category",
-    boundaryGap: false,
-    show: false,
-  },
-  yAxis: {
-    show: false,
-  },
-  series: [
-    {
-      type: "line",
-      data: [10, 11, 13, 11, 12, 12, 9],
-      color: "#c9ecf7",
-      symbol: "circle",
-      symbolSize: 8,
-      label: {
-        show: true,
-        position: "top",
-        fontSize: 15,
-        padding: [0, 0, 4, 0],
-        formatter: "{c}°",
-      },
-    },
-    {
-      type: "line",
-      label: {
-        show: true,
-        position: "bottom",
-        fontSize: 15,
-        padding: [0, 0, 4, 0],
-        formatter: "{c}°",
-      },
-      data: [1, -2, 2, 5, 3, 2, 0],
-      color: "#ffed96",
-      symbol: "circle",
-      symbolSize: 8,
-    },
-  ],
-};
 
 /**
  * 获取三天天气
@@ -103,17 +82,53 @@ watch(isFetch, (val) => {
 </script>
 
 <style lang="scss">
-.seven-day-weather {
+.seven-day-weather-wrapper {
   .title {
-    padding: 32px;
+    padding: 24px 0 20px 32px;
     color: #000;
     font-size: 36px;
     font-weight: 700;
     border-bottom: 1px solid #e5e5e5;
   }
-  .scroll-view {
-    width: 140%;
-    height: 400px;
+  .seven-day-weather {
+    width: 100%;
+    margin-top: 48px;
+    .seven-day-weather-item {
+      display: flex;
+      align-items: center;
+      background-color: #fafcfd;
+      margin: 16px 40px 0;
+      padding: 24px 24px;
+      border-radius: 16px;
+      .date {
+        display: flex;
+        flex-direction: column;
+        margin-right: 34px;
+        .week-text {
+          font-size: 36px;
+          color: #000;
+        }
+        .date-text {
+          font-size: 32px;
+          color: #767676;
+        }
+      }
+      .icon {
+        margin: 0 24px;
+      }
+      .text {
+        font-size: 32px;
+        color: #000;
+        padding: 0 16px;
+      }
+      .temp-bar {
+        flex: 1;
+        height: 8px;
+        background-color: #000;
+        border-radius: 8px;
+        background: linear-gradient(to right, #ff8766, #436fff);
+      }
+    }
   }
 }
 </style>

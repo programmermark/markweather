@@ -34,6 +34,7 @@ export interface IRealTimeAirQuality {
 
 /** 三天天气预报接口定义 */
 export interface ITreeDayWeather {
+  fxDate: string /** 日期 */;
   tempMax: string /** 最高温度 */;
   tempMin: string /** 最低温度 */;
   iconDay: string /** 白天天气状况图标代码 */;
