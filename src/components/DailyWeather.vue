@@ -16,6 +16,7 @@ import Taro from "@tarojs/taro";
 import apis from "../apis";
 import Echart from "./Echart.vue";
 import { ECOption } from "./interface/echart";
+import { transHourTOText } from "@/common/js";
 
 const props = withDefaults(defineProps<{ isFetch: boolean }>(), {
   isFetch: false,
@@ -26,23 +27,43 @@ const { isFetch } = toRefs(props);
 const locationStore = useLocationStore();
 
 const dailyWeather = ref<IDailyWeather[]>([]);
-const dailyWeatherOptions = ref<ECOption>({
-  xAxis: {
-    type: "category",
-    boundaryGap: false,
-    data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-  },
-  yAxis: {
-    type: "value",
-  },
-  series: [
-    {
-      data: [820, 932, 901, 934, 1290, 1330, 1320],
-      type: "line",
-      areaStyle: {},
+const dailyWeatherOptions = ref<ECOption>();
+const xAxis = ref<string[]>([]);
+
+const setDailyWeatherOptions = (seriesData: number[]): ECOption => {
+  return {
+    xAxis: {
+      type: "category",
+      boundaryGap: false,
+      show: false,
     },
-  ],
-});
+    yAxis: {
+      type: "value",
+    },
+    series: [
+      {
+        data: seriesData,
+        type: "line",
+        symbol: "none",
+        color: "#7cb3e9",
+        lineStyle: {
+          width: 1,
+        },
+        areaStyle: {
+          color: "#ebf4fd",
+        },
+        smooth: true,
+        label: {
+          show: true,
+          position: "top",
+          fontSize: 15,
+          padding: [0, 0, 4, 0],
+          formatter: "{c}°",
+        },
+      },
+    ],
+  };
+};
 
 /**
  * 获取24小时天气
@@ -54,6 +75,11 @@ const fetchHoursWeather = async () => {
   });
   console.log("data.hourly", data.hourly);
   dailyWeather.value = data.hourly;
+  xAxis.value = dailyWeather.value
+    .filter((_item, index) => index % 2)
+    .map((item) => transHourTOText(item.fxTime));
+  const seriesData = dailyWeather.value.map((item) => Number(item.temp));
+  dailyWeatherOptions.value = setDailyWeatherOptions(seriesData);
 };
 
 watch(isFetch, (val) => {

@@ -53,11 +53,6 @@ export const transWeatherToIconColor = (weather: string) => {
   return color;
 };
 
-/** 返回指定类型的对象的键名数组 */
-export function keysOf<T>(obj: T) {
-  return Object.keys(obj) as (keyof T)[];
-}
-
 /**
  * 转换传入的时间为指定的格式
  * @param timestamp 时间戳(支持字符串和数字)
@@ -120,4 +115,38 @@ function dateFormat(date: Date, pattern: string) {
   } else {
     return date;
   }
+}
+
+export function getWeek(date: Date) {
+  const week = [
+    "星期日",
+    "星期一",
+    "星期二",
+    "星期三",
+    "星期四",
+    "星期五",
+    "星期六",
+  ];
+  return week[date.getDay()];
+}
+
+/**
+ * 转换日期字符串为小时数文本
+ * @param dateStr 日期字符串
+ * @returns
+ */
+export function transHourTOText(dateStr: string) {
+  const nowHour = new Date().getHours();
+  const dateHour = new Date(dateStr).getHours();
+  let text = "";
+  if (nowHour === dateHour) {
+    text = "现在";
+  } else if (dateHour === 0) {
+    text = "明天";
+  } else if (dateHour < 10) {
+    text = `0${dateHour}:00`;
+  } else {
+    text = `${dateHour}:00`;
+  }
+  return text;
 }

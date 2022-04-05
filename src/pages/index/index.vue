@@ -5,7 +5,7 @@
     <RealTimeWeather :isFetch="hasGetLocation" />
     <!-- 今明两天天气信息 -->
     <!-- 24小时天气预报 -->
-    <!-- <DailyWeather :isFetch="hasGetLocation" /> -->
+    <DailyWeather :isFetch="hasGetLocation" />
     <!-- 7天天气预报 -->
     <SevenDayWeather :isFetch="hasGetLocation" />
     <!-- 生活指数 -->
@@ -22,6 +22,7 @@ import { ref } from "vue";
 import apis from "@/apis/index";
 import { IGetGeoByLocation } from "@/components/interface";
 import IndicesWeather from "@/components/IndicesWeather.vue";
+import DailyWeather from "@/components/DailyWeather.vue";
 import SevenDayWeather from "@/components/SevenDayWeather.vue";
 
 const locationStore = useLocationStore();

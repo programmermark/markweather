@@ -14,7 +14,10 @@
 import Taro from "@tarojs/taro";
 import { onMounted, ref } from "vue";
 import WxCanvas from "./wx-canvas";
-import * as echarts from "echarts";
+import * as echarts from "echarts/core";
+import { LineChart } from "echarts/charts";
+import { GridComponent } from "echarts/components";
+import { CanvasRenderer } from "echarts/renderers";
 
 const props = defineProps<{ canvasId?: string; ec: any }>();
 
@@ -121,6 +124,8 @@ defineExpose({
 });
 
 onMounted(() => {
+  // 注册必须的组件
+  echarts.use([LineChart, GridComponent, CanvasRenderer]);
   echarts.registerPreprocessor((option) => {
     if (option && option.series) {
       if ((option as any).series.length > 0) {
