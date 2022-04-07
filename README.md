@@ -9,13 +9,17 @@
   </a>
 </p>
 
-> Mark天气
+> Mark天气，使用Taro和Vue3构建的实时天气小程序，缓慢迭代中……
 
-## Install
+## 安装
 
 ```sh
 yarn install
 ```
+
+### 小程序码
+
+![小程序码](./src/assets/image/miniCode.jpg)
 
 ## Author
 
