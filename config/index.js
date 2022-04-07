@@ -1,7 +1,7 @@
 import path from "path";
 
 const config = {
-  projectName: "xiaoyuanweather",
+  projectName: "Markweather",
   date: "2022-3-20",
   designWidth: 750,
   deviceRatio: {

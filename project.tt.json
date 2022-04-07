@@ -1,7 +1,7 @@
 {
   "miniprogramRoot": "./",
-  "projectname": "xiaoyuanweather",
-  "description": "小源天气",
+  "projectname": "Markweather",
+  "description": "Mark天气",
   "appid": "wx68396b21d4585a7f",
   "setting": {
     "urlCheck": true,

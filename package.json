@@ -1,8 +1,8 @@
 {
-  "name": "xiaoyuanweather",
+  "name": "Markweather",
   "version": "1.0.0",
   "private": true,
-  "description": "小源天气",
+  "description": "Mark天气",
   "templateInfo": {
     "name": "vue3-pinia",
     "typescript": true,

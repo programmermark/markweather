@@ -57,7 +57,7 @@ const getGeoByLocation = (text: string) => {
 const showModal = () => {
   Taro.showModal({
     title: "定位失败",
-    content: `请先允许“使用我的地理位置”后，再查看定位城市天气信息，小源天气默认为您展示${defaultCity}天气信息。`,
+    content: `请先允许“使用我的地理位置”后，再查看定位城市天气信息，Mark天气默认为您展示${defaultCity}天气信息。`,
     showCancel: false,
     success: function (res) {
       if (res.confirm) {
