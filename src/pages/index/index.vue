@@ -14,7 +14,11 @@
 </template>
 
 <script lang="ts" setup>
-import Taro, { useReady } from "@tarojs/taro";
+import Taro, {
+  useReady,
+  useShareAppMessage,
+  useShareTimeline,
+} from "@tarojs/taro";
 import "./index.scss";
 import { useLocationStore } from "@/stores/location";
 import RealTimeWeather from "@/components/RealTimeWeather.vue";
@@ -107,5 +111,18 @@ useReady(() => {
       }
     },
   });
+});
+
+useShareAppMessage(() => {
+  Taro.showShareMenu({
+    withShareTicket: true,
+    menus: ["shareAppMessage", "shareTimeline"],
+  });
+});
+
+useShareTimeline(() => {
+  return {
+    title: "感谢使用Mark天气查看实时天气信息",
+  };
 });
 </script>
