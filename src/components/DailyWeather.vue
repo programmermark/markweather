@@ -60,31 +60,31 @@ watch(isFetch, (val) => {
 <style lang="scss">
 .daily-weather-wrapper {
   .title {
-    padding: 96px 0 20px 32px;
+    padding: 48px 0 10px 16px;
     color: #000;
-    font-size: 36px;
+    font-size: 18px;
     font-weight: 700;
     border-bottom: 1px solid #e5e5e5;
   }
   .daily-weather {
     display: flex;
-    height: 320px;
+    height: 160px;
     white-space: nowrap;
     .daily-weather-item {
       width: 12.5%;
       display: inline-flex;
       flex-direction: column;
       box-sizing: border-box;
-      padding: 24px 12px;
+      padding: 12px 6px;
       .text {
-        font-size: 28px;
+        font-size: 14px;
         color: #a2a8b2;
         text-align: center;
-        margin: 24px 0;
+        margin: 12px 0;
         font-weight: 700;
       }
       .icon {
-        font-size: 48px;
+        font-size: 24px;
         color: #75777b;
         text-align: center;
       }

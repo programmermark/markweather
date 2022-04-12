@@ -159,11 +159,11 @@ watch(isFetch, (val) => {
 
 <style lang="scss">
 .indices-weather-wrapper {
-  padding: 120px 0;
+  padding: 60px 0;
   .title {
-    font-size: 36px;
-    padding-left: 32px;
-    padding-bottom: 24px;
+    font-size: 18px;
+    padding-left: 16px;
+    padding-bottom: 12px;
     font-weight: 600;
     border-bottom: 1px solid #e5e5e5;
   }
@@ -171,22 +171,22 @@ watch(isFetch, (val) => {
     display: inline-block;
     width: 25%;
     text-align: center;
-    padding: 32px;
+    padding: 16px;
     border-right: 1px dotted #e5e5e5;
     border-bottom: 1px dotted #e5e5e5;
     box-sizing: border-box;
     .category {
-      margin-top: 16px;
+      margin-top: 8px;
       color: #111111;
-      font-size: 32px;
+      font-size: 16px;
     }
     .name {
-      margin-top: 16px;
+      margin-top: 8px;
       color: #9f9f9f;
-      font-size: 28px;
+      font-size: 14px;
     }
     .icon {
-      font-size: 52px;
+      font-size: 26px;
       color: #66b2ff;
     }
   }

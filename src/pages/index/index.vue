@@ -14,11 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import Taro, {
-  useReady,
-  useShareAppMessage,
-  useShareTimeline,
-} from "@tarojs/taro";
+import Taro, { useReady, useShareTimeline } from "@tarojs/taro";
 import "./index.scss";
 import { useLocationStore } from "@/stores/location";
 import RealTimeWeather from "@/components/RealTimeWeather.vue";
@@ -86,6 +82,7 @@ const getLocation = () => {
     success: function (res) {
       locationStore.lat = res.latitude;
       locationStore.lng = res.longitude;
+      locationStore.cityName = "";
       hasGetLocation.value = true;
     },
   });
@@ -107,16 +104,15 @@ useReady(() => {
           },
         });
       } else {
-        getLocation();
+        console.log("11111");
+        if (!locationStore.lat && !locationStore.lat) {
+          getLocation();
+        } else {
+          hasGetLocation.value = true;
+        }
+        // getLocation();
       }
     },
-  });
-});
-
-useShareAppMessage(() => {
-  Taro.showShareMenu({
-    withShareTicket: true,
-    menus: ["shareAppMessage", "shareTimeline"],
   });
 });
 

@@ -1,12 +1,17 @@
 <template>
   <view :class="['wrapper', realTimeWeatherBg]">
     <view class="location-wrapper">
-      <text class="iconfont icon-location icon" />
-      <view class="location-text">
-        <text class="text">{{ district }}</text>
-        <text>{{ street }}</text>
+      <view class="location-content-wrapper" @click="gotoChangeLocation">
+        <text class="iconfont icon-location icon" />
+        <view class="location-text" v-if="cityName">
+          <text class="text">{{ cityName }}</text>
+        </view>
+        <view class="location-text" v-else>
+          <text class="text">{{ district }}</text>
+          <text>{{ street }}</text>
+        </view>
+        <text class="iconfont icon-arrow-down icon" />
       </view>
-      <text class="iconfont icon-arrow-down icon" />
     </view>
     <view>
       <view class="temperature-wrapper">
@@ -153,6 +158,9 @@ const realTimeWeatherBg = computed(() => {
   return bgClass;
 });
 
+/** 城市名 */
+const cityName = computed(() => locationStore.cityName);
+
 /** 区县 */
 const district = computed(() => {
   if (location.value) {
@@ -235,6 +243,12 @@ const getLocationByGeo = async () => {
   }
 };
 
+const gotoChangeLocation = () => {
+  Taro.navigateTo({
+    url: "/pages/changeLocation/index",
+  });
+};
+
 watch(isFetch, (val) => {
   if (val) {
     getRealTimeWeather();
@@ -248,7 +262,7 @@ watch(isFetch, (val) => {
 <style lang="scss">
 .wrapper {
   width: 100%;
-  height: 1000px;
+  height: 500px;
   position: relative;
 }
 .wrapper::after {
@@ -262,7 +276,7 @@ watch(isFetch, (val) => {
   z-index: -1;
   background-repeat: no-repeat;
   background-size: cover;
-  filter: blur(2px);
+  filter: blur(1px);
 }
 .bg-cloudy::after {
   background-image: url(../assets/image/cloudy.jpg);
@@ -283,34 +297,38 @@ watch(isFetch, (val) => {
 .location-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
-  font-size: 36px;
-  color: #000;
-  padding-top: 48px;
-  .location-text {
-    display: flex;
+  padding-top: 24px;
+  .location-content-wrapper {
+    display: inline-flex;
+    justify-content: center;
     align-items: center;
-    padding: 0 16px;
-    .text {
-      padding-right: 8px;
+    font-size: 18px;
+    color: #000;
+    .location-text {
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      .text {
+        padding-right: 4px;
+      }
     }
   }
 }
 .icon {
-  font-size: 36px;
+  font-size: 18px;
   color: #000;
 }
 
 .temperature-wrapper {
   display: flex;
   justify-content: center;
-  padding-top: 80px;
-  font-size: 240px;
+  padding-top: 40px;
+  font-size: 120px;
   font-weight: 100;
   .unit {
-    font-size: 120px;
+    font-size: 60px;
     position: relative;
-    top: 20px;
+    top: 10px;
   }
 }
 
@@ -318,25 +336,25 @@ watch(isFetch, (val) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   .text {
     color: #000;
-    padding-right: 32px;
+    padding-right: 16px;
     border-right: 1px solid #8c9194;
   }
   .quality {
     display: flex;
     align-items: center;
     color: #fff;
-    font-size: 36px;
-    margin-left: 30px;
-    padding: 8px 16px;
-    border-radius: 8px;
+    font-size: 18px;
+    margin-left: 15px;
+    padding: 4px 8px;
+    border-radius: 4px;
     .aqi {
-      margin: 0 16px;
+      margin: 0 8px;
     }
     .category {
-      margin-right: 16px;
+      margin-right: 8px;
     }
   }
 }
@@ -344,34 +362,34 @@ watch(isFetch, (val) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 64px;
+  padding-bottom: 32px;
   .wind-scale {
     display: flex;
     align-items: center;
     color: #333;
-    margin-right: 40px;
-    font-size: 32px;
+    margin-right: 20px;
+    font-size: 16px;
     .value {
-      padding-left: 12px;
+      padding-left: 6px;
     }
   }
 }
 .tree-day-wrapper {
   width: 100%;
   position: relative;
-  margin-top: 128px;
-  padding: 20px 0;
+  margin-top: 64px;
+  padding: 10px 0;
   .daily-weather {
     display: inline-block;
     width: 50%;
-    padding: 0 32px;
+    padding: 0 16px;
     box-sizing: border-box;
-    font-size: 34px;
+    font-size: 17px;
     &:first-child {
       border-right: 1px solid #e1e2e4;
     }
     .temperature {
-      padding-bottom: 20px;
+      padding-bottom: 10px;
     }
   }
 }
@@ -390,11 +408,11 @@ watch(isFetch, (val) => {
   display: flex;
   flex-direction: row-reverse;
   .sperate {
-    padding: 0 8px;
+    padding: 0 4px;
     color: #666;
   }
   .icon {
-    font-size: 40px;
+    font-size: 20px;
   }
 }
 </style>

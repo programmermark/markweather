@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 
 export const useLocationStore = defineStore("location", {
   state: () => {
-    return { lat: 0, lng: 0 };
+    return { lat: 0, lng: 0, cityName: "" };
   },
   actions: {},
 });

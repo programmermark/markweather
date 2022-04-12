@@ -35,8 +35,10 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.7.7",
+    "@nutui/nutui-taro": "^3.1.18",
     "@tarojs/components": "3.4.3",
     "@tarojs/plugin-framework-vue3": "3.4.3",
+    "@tarojs/plugin-html": "^3.4.4",
     "@tarojs/runtime": "3.4.3",
     "@tarojs/taro": "3.4.3",
     "axios": "^0.26.1",
@@ -53,6 +55,7 @@
     "@types/webpack-env": "^1.13.6",
     "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.1",
+    "babel-plugin-import": "^1.13.3",
     "babel-preset-taro": "3.4.3",
     "eslint": "^6.8.0",
     "eslint-config-taro": "3.4.3",

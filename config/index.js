@@ -3,15 +3,23 @@ import path from "path";
 const config = {
   projectName: "Markweather",
   date: "2022-3-20",
-  designWidth: 750,
+  // designWidth: 750,
+  designWidth: 375,
   deviceRatio: {
     640: 2.34 / 2,
     750: 1,
     828: 1.81 / 2,
+    375: 2 / 1,
   },
   sourceRoot: "src",
   outputRoot: "dist",
-  plugins: ["taro-plugin-pinia"],
+  plugins: ["taro-plugin-pinia", "@tarojs/plugin-html"],
+  sass: {
+    resource: [
+      path.resolve(__dirname, "..", "src/assets/css/nutui-theme.scss"),
+    ],
+    data: `@import "@nutui/nutui-taro/dist/styles/variables.scss";`,
+  },
   defineConstants: {},
   copy: {
     patterns: [],

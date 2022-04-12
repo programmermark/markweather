@@ -84,48 +84,48 @@ watch(isFetch, (val) => {
 <style lang="scss">
 .seven-day-weather-wrapper {
   .title {
-    padding: 24px 0 20px 32px;
+    padding: 12px 0 10px 16px;
     color: #000;
-    font-size: 36px;
+    font-size: 18px;
     font-weight: 700;
     border-bottom: 1px solid #e5e5e5;
   }
   .seven-day-weather {
     width: 100%;
-    margin-top: 48px;
+    margin-top: 24px;
     .seven-day-weather-item {
       display: flex;
       align-items: center;
       background-color: #fafcfd;
-      margin: 16px 40px 0;
-      padding: 24px 24px;
-      border-radius: 16px;
+      margin: 8px 20px 0;
+      padding: 12px 12px;
+      border-radius: 8px;
       .date {
         display: flex;
         flex-direction: column;
-        margin-right: 34px;
+        margin-right: 17px;
         .week-text {
-          font-size: 36px;
+          font-size: 18px;
           color: #000;
         }
         .date-text {
-          font-size: 32px;
+          font-size: 16px;
           color: #767676;
         }
       }
       .icon {
-        margin: 0 24px;
+        margin: 0 12px;
       }
       .text {
-        font-size: 32px;
+        font-size: 16px;
         color: #000;
-        padding: 0 16px;
+        padding: 0 8px;
       }
       .temp-bar {
         flex: 1;
-        height: 8px;
+        height: 4px;
         background-color: #000;
-        border-radius: 8px;
+        border-radius: 4px;
         background: linear-gradient(to right, #ff8766, #436fff);
       }
     }
