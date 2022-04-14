@@ -17,4 +17,6 @@ export default {
   dailyWeather: weatherUrl + "/weather/24h",
   /** 获取生活指数 */
   indicesWeather: weatherUrl + "/indices/1d",
+  /** 根据文本搜索地理位置信息 */
+  getPlaceByText: locationUrl + "/place/text",
 };
